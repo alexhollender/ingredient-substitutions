@@ -1,0 +1,10 @@
+.SubstituteCategory { margin-bottom: 36px; }
+// if there is only one SubstituteCategory
+.SubstituteCategory:only-of-type {
+  border-top: 1px solid var(--light-gray);
+  h3 { display: none; }
+}
+.SubstituteCategory h3 {
+  border-bottom: 1px solid var(--gray);
+  padding-bottom: 8px;
+}

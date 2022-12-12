@@ -1,0 +1,33 @@
+.aa-Form {
+  display: flex;
+  flex-direction: column;
+
+  #input-container { position: relative; }
+  img { position: absolute; top: calc(50% - 9px); margin-left: 14px; }
+  input {
+    width: 100%;
+    height: 50px;
+    font-size: 30px;
+    font-family: serif;
+    border: 1px solid var(--gray);
+    border-radius: 2px;
+    box-shadow: inset 0 0 0 1px transparent;
+    padding-left: 46px;
+    &::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+      height: 14px;
+      width: 14px;
+      margin: 0 14px;
+      background-image: url("../assets/close-icon.svg");
+      cursor: pointer;
+    }
+  }
+  input:hover { border-color: #000; }
+  input:focus-visible { outline: none; border-color: blue; box-shadow: inset 0 0 0 1px blue; }
+}
+
+.aa-List:has(a) {
+  border: 1px solid var(--light-gray);
+  border-radius: 0 0 2px 2px;
+  margin-top: -2px;
+}
