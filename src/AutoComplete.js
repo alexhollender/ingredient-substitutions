@@ -48,8 +48,17 @@ function AutoComplete({ setCurrentItem, setSubstitutesByCategory }) {
       onStateChange({ state }) {
         // Synchronize the Autocomplete state with the React state.
         setAutocompleteState(state);
+        // if input is cleared, reset the app
+        // if (ingredient && state.query.length < 1) {
+        //   console.log('input was cleared')
+        //   window.location.href = '/'
+        // }
+        console.log(ingredient)
       },
+      id: 'autocomplete',
       placeholder: 'Search for an ingredient',
+      autoFocus: !ingredient,
+      openOnFocus: !ingredient,
       getSources() {
         return [
           {
@@ -121,6 +130,7 @@ function AutoComplete({ setCurrentItem, setSubstitutesByCategory }) {
                 )}
               </div>
             );
+
           })}
       </div>
     </div>

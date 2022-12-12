@@ -26,7 +26,7 @@
   input:focus-visible { outline: none; border-color: blue; box-shadow: inset 0 0 0 1px blue; }
 }
 
-.aa-List:has(a) {
+#autocomplete-list:has(a) {
   border: 1px solid var(--light-gray);
   border-radius: 0 0 2px 2px;
   margin-top: -2px;
