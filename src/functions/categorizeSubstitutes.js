@@ -1,4 +1,4 @@
-export function substituesByCategory(substitutes) {
+export function categorizeSubstitutes(substitutes) {
   // create the substitutes by category array
   let substitutesByCategoryArray = [
     {

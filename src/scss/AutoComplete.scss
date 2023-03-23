@@ -1,3 +1,5 @@
+.aa-Autocomplete { position: relative; }
+
 .aa-Form {
   display: flex;
   flex-direction: column;
@@ -23,11 +25,23 @@
     }
   }
   input:hover { border-color: #000; }
-  input:focus-visible { outline: none; border-color: blue; box-shadow: inset 0 0 0 1px blue; }
+  input:focus-visible { 
+    outline: none; 
+    border-color: blue; 
+    box-shadow: inset 0 0 0 1px blue;
+    border-radius: 2px 2px 0 0; 
+  }
 }
 
-#autocomplete-list:has(a) {
-  border: 1px solid var(--light-gray);
+.aa-Panel {
   border-radius: 0 0 2px 2px;
-  margin-top: -2px;
+  position: absolute;
+  width: calc(100% - 2px);
+  
+  &:has(a) {
+    border: 1px solid var(--light-gray);
+    border-top: none;
+    background-color: #fff;
+    box-shadow: 0 2px 2px rgb(0 0 0 / 10%);
+  }
 }

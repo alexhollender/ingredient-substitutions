@@ -4,6 +4,8 @@
   --light-gray: #ccc;
 }
 
+// to fix the page jump between no scrollbar & scrollbar
+html { overflow-y: scroll; }
 html, body { margin: 0; -webkit-font-smoothing: antialiased; }
 main { max-width: 600px; margin: 0 auto; margin-top: 150px; }
 h1, h2, h3 { margin: 0; color: var(--dark-gray); font-weight: normal; }

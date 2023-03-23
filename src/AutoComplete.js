@@ -2,13 +2,12 @@ import { useState, useEffect, useMemo, useRef } from 'react';
 import { createAutocomplete } from '@algolia/autocomplete-core';
 import { getAlgoliaResults } from '@algolia/autocomplete-preset-algolia';
 import { useParams } from "react-router-dom";
+import { searchClient } from './data/algoliasearchclient';
 import SearchResultItem from './SearchResultItem';
-import { searchIndex, searchClient } from './data/algoliasearchclient';
-import { substituesByCategory } from './functions/substitutesByCategory';
 import './scss/AutoComplete.scss';
 import searchIcon from './assets/search-icon.svg';
 
-function AutoComplete({ setCurrentItem, setSubstitutesByCategory }) {
+function AutoComplete({ currentItem }) {
 
   // tracks the state of autocomplete
   const [autocompleteState, setAutocompleteState] = useState({})
@@ -18,42 +17,18 @@ function AutoComplete({ setCurrentItem, setSubstitutesByCategory }) {
   const { ingredient } = useParams()
 
   useEffect(() => {
-    // check if there is already an ingredient in the URL
-    if (ingredient) {
-      console.log(`(via URL) getting data for: ${ingredient}`)
-      searchIndex.search(ingredient).then(({ hits }) => {
-        // if there is at least one hit
-        if (hits.length > 0) {
-          // if the ingredient in the URL doesn't match the ID of the first hit
-          // update it so it matches the ID (this is purely cosmetic)
-          if (ingredient !== hits[0].id) {
-            window.location.href = hits[0].id
-          // if it already matches, search for the item
-          } else {
-            setCurrentItem(hits[0])
-            setSubstitutesByCategory(substituesByCategory(hits[0].substitutes))
-            // updates the input field with ingredient name
-            autocomplete.setQuery(hits[0].ingredientName)
-          }
-        // need to build out an error state here
-        } else {
-          console.log('ingredient not found')
-        }
-      });
+    // check if there is an item loaded into <Root>'s state
+    if (currentItem) {
+      // update the search field with ingredient name
+      autocomplete.setQuery(currentItem.ingredientName)
     }
-  }, [ingredient]);
+  }, [currentItem]);
 
   const autocomplete = useMemo(() =>
     createAutocomplete({
       onStateChange({ state }) {
         // Synchronize the Autocomplete state with the React state.
         setAutocompleteState(state);
-        // if input is cleared, reset the app
-        // if (ingredient && state.query.length < 1) {
-        //   console.log('input was cleared')
-        //   window.location.href = '/'
-        // }
-        console.log(ingredient)
       },
       id: 'autocomplete',
       placeholder: 'Search for an ingredient',
@@ -83,11 +58,7 @@ function AutoComplete({ setCurrentItem, setSubstitutesByCategory }) {
               });
             },
             onSelect: function (event) {
-              console.log(`(via select) getting data for: ${event.item.ingredientName}`)
-              setCurrentItem(event.item)
-              setSubstitutesByCategory(substituesByCategory(event.item.substitutes))
-              // updates the input field with selected ingredient name
-              event.setQuery(event.item.ingredientName)
+              console.log(`(via select) redirecting to ${event.item.ingredientName}`)
               // remove focus from input
               document.activeElement.blur()
             },
@@ -109,30 +80,33 @@ function AutoComplete({ setCurrentItem, setSubstitutesByCategory }) {
           <input id="ingredient-input" ref={inputRef} {...autocomplete.getInputProps({})} />
         </div>
       </form>
-      <div className="aa-Panel" {...autocomplete.getPanelProps({})}>
-        {autocompleteState.isOpen &&
-          autocompleteState.collections.map((collection, index) => {
-            const { source, items } = collection;
-
-            return (
-              <div key={`source-${index}`} className={"aa-Source"}>
-                {items.length > 0 && (
-                  <ul className="aa-List" {...autocomplete.getListProps()}>
-                    {items.map((item) => (
-                      <SearchResultItem
-                        key={item.objectID}
-                        autocomplete={autocomplete}
-                        source={source}
-                        item={item}
-                      />
-                    ))}
-                  </ul>
-                )}
-              </div>
-            );
-
-          })}
-      </div>
+      {
+        autocompleteState.query ? 
+        <div className="aa-Panel" {...autocomplete.getPanelProps({})}>
+          {autocompleteState.isOpen &&
+            autocompleteState.collections.map((collection, index) => {
+              const { source, items } = collection;
+              return (
+                <div key={`source-${index}`} className={"aa-Source"}>
+                  {items.length > 0 && (
+                    <ul className="aa-List" {...autocomplete.getListProps()}>
+                      {items.map((item) => (
+                        <SearchResultItem
+                          key={item.objectID}
+                          autocomplete={autocomplete}
+                          source={source}
+                          item={item}
+                        />
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              );
+            })
+          }
+        </div>
+        : null
+      }
     </div>
   );
 }
