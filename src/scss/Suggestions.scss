@@ -1,1 +1,4 @@
-#suggestions { margin-top: 40px; }
+#suggestions ul { margin-top: 20px; }
+#suggestions ul a:hover { text-decoration: underline; }
+#suggestions ul a:active { color: lightgray; }
+#suggestions ul li { padding: 6px 0; }

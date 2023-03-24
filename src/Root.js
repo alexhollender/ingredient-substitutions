@@ -39,7 +39,7 @@ function Root() {
       <main>
         <AutoComplete currentItem={currentItem} />
         { !path ? <Suggestions /> : null }
-        <Outlet context={[currentItem, substitutesByCategory]} />
+        <Outlet context={substitutesByCategory} />
       </main>
     </div>
   );

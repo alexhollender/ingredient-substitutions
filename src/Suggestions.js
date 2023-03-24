@@ -3,12 +3,12 @@ import './scss/Suggestions.scss';
 
 function Suggestions() {
   return (
-    <div id="suggestions">
-      <h2>For example:</h2>
+    <div id="suggestions" className="panel">
+      <h2>For example</h2>
       <ul>
-        <li><Link to="dill">Dill</Link></li>
-        <li><Link to="paprika">Paprika</Link></li>
-        <li><Link to="vanilla_extract">Vanilla extract</Link></li>
+        <Link to="dill"><li className="font-ingredient">Dill</li></Link>
+        <Link to="anise"><li className="font-ingredient">Anise</li></Link>
+        <Link to="vanilla_extract"><li className="font-ingredient">Vanilla extract</li></Link>
       </ul>
     </div>
   );

@@ -4,13 +4,12 @@ import './scss/Substitutes.scss';
 
 function Substitutes() {
 
-  // AutoComplete sets currentItem (in Root's state)
-  // Root passes it down to Substitutes via outletContext
-  const [currentItem, substitutesByCategory] = useOutletContext();
+  // From <Root>
+  const substitutesByCategory = useOutletContext();
 
   return (
-    <section id="substitutes">
-      <h2 className="label">Substitutes:</h2>
+    <section id="substitutes" className="panel">
+      <h2 className="label">Substitutes</h2>
       {substitutesByCategory.map(({ category, items }) => {
         return <SubstituteCategory
           key={category}
