@@ -8,12 +8,16 @@
 html { overflow-y: scroll; }
 html, body { margin: 0; -webkit-font-smoothing: antialiased; }
 main { max-width: 600px; margin: 0 auto; margin-top: 150px; margin-bottom: 75px; }
-h1, h2, h3 { margin: 0; font-weight: normal; color: var(--dark-gray); }
+h1, h2, h3 { 
+  margin: 0; 
+  font-weight: normal; 
+  font-family: sans-serif; 
+  color: var(--dark-gray); 
+}
 h1 { font-size: 32px; font-family: serif; }
-h2 { font-size: 18px; font-family: sans-serif; }
-h3 { font-size: 16px; font-family: sans-serif; color: #000;}
+h2 { font-size: 18px; }
+h3 { font-size: 14px; color: #000;}
 p { margin: 0; }
-.label { margin-bottom: 16px; }
 ul, li { margin: 0; padding: 0; list-style-type: none; }
 a { text-decoration: none; }
 .font-ingredient {
@@ -39,4 +43,6 @@ a { text-decoration: none; }
   padding: 30px 44px 40px 44px;
   background: #f9f9f9;
   border-radius: 10px;
+
+  h2 { margin-bottom: 20px; }
 }

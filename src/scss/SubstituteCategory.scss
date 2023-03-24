@@ -6,6 +6,8 @@
   h3 { display: none; }
 }
 .SubstituteCategory h3 {
-  border-bottom: 1px solid var(--gray);
-  padding-bottom: 8px;
+  display: inline-block;
+  border-radius: 13px;
+  padding: 4px 10px;
+  border: 1px solid black;
 }

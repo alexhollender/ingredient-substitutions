@@ -9,6 +9,7 @@ function Suggestions() {
         <Link to="dill"><li className="font-ingredient">Dill</li></Link>
         <Link to="anise"><li className="font-ingredient">Anise</li></Link>
         <Link to="vanilla_extract"><li className="font-ingredient">Vanilla extract</li></Link>
+        <Link to="millet"><li className="font-ingredient">Millet</li></Link>
       </ul>
     </div>
   );

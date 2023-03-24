@@ -9,7 +9,7 @@ function Substitutes() {
 
   return (
     <section id="substitutes" className="panel">
-      <h2 className="label">Substitutes</h2>
+      <h2>Substitutes</h2>
       {substitutesByCategory.map(({ category, items }) => {
         return <SubstituteCategory
           key={category}
