@@ -6,7 +6,7 @@ function SearchResultItem({ autocomplete, source, item }) {
   return (
     <Link to={item.id}>
       <li
-        className="aa-SearchResultItem"
+        className="aa-SearchResultItem font-ingredient"
         {...autocomplete.getItemProps({
           item,
           source,

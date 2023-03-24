@@ -13,27 +13,30 @@ function AutoComplete({ currentItem }) {
   const [autocompleteState, setAutocompleteState] = useState({})
   // sets the input for autocomplete
   const inputRef = useRef(null)
-  // gets whatever is after the '/' in the URL
-  const { ingredient } = useParams()
+  // get URL path
+  const { path } = useParams()
 
   useEffect(() => {
     // check if there is an item loaded into <Root>'s state
-    if (currentItem) {
+    if (currentItem.id) {
+      console.log('autocomplete rendered with', currentItem.ingredientName)
       // update the search field with ingredient name
       autocomplete.setQuery(currentItem.ingredientName)
+    } else {
+      console.log('autocomplete rendered empty')
+      autocomplete.setQuery('')
     }
   }, [currentItem]);
 
   const autocomplete = useMemo(() =>
     createAutocomplete({
       onStateChange({ state }) {
-        // Synchronize the Autocomplete state with the React state.
+        // Synchronize the Autocomplete state with the React state
         setAutocompleteState(state);
       },
       id: 'autocomplete',
       placeholder: 'Search for an ingredient',
-      autoFocus: !ingredient,
-      openOnFocus: !ingredient,
+      autoFocus: !path,
       getSources() {
         return [
           {
@@ -58,7 +61,6 @@ function AutoComplete({ currentItem }) {
               });
             },
             onSelect: function (event) {
-              console.log(`(via select) redirecting to ${event.item.ingredientName}`)
               // remove focus from input
               document.activeElement.blur()
             },
@@ -74,15 +76,12 @@ function AutoComplete({ currentItem }) {
         className="aa-Form"
         {...autocomplete.getFormProps({ inputElement: inputRef.current })}
       >
-        <label className="label" htmlFor="ingredient-input">Ingredient:</label>
         <div id="input-container">
           <img src={searchIcon} />
-          <input id="ingredient-input" ref={inputRef} {...autocomplete.getInputProps({})} />
+          <input id="ingredient-input" className="font-ingredient" ref={inputRef} {...autocomplete.getInputProps({})} />
         </div>
       </form>
-      {
-        autocompleteState.query ? 
-        <div className="aa-Panel" {...autocomplete.getPanelProps({})}>
+      <div className="aa-Panel" {...autocomplete.getPanelProps({})}>
           {autocompleteState.isOpen &&
             autocompleteState.collections.map((collection, index) => {
               const { source, items } = collection;
@@ -105,8 +104,6 @@ function AutoComplete({ currentItem }) {
             })
           }
         </div>
-        : null
-      }
     </div>
   );
 }

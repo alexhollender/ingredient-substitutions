@@ -2,19 +2,12 @@
   border-bottom: 1px solid var(--light-gray);
   padding: 16px 0;
 }
-.substitute-name { font-size: 20px; font-weight: bold; }
-.substitute-name span { font-weight: normal; }
-.substitute-proportion { font-style: italic; }
-.substitute-note {
-  color: var(--dark-gray);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.SubstituteItem:has(.substitute-proportion, .substitute-note) {
-  .substitute-name { margin-bottom: 6px; }
+.name span { font-weight: normal; }
+.proportion { font-style: italic; }
+.SubstituteItem:has(.proportion, .note) {
+  .name { margin-bottom: 6px; }
 }
 // if there is both a proportion and a note
-.SubstituteItem:has(.substitute-proportion):has(.substitute-note) {
-  .substitute-proportion { margin-bottom: 6px; }
+.SubstituteItem:has(.proportion):has(.note) {
+  .proportion { margin-bottom: 6px; }
 }

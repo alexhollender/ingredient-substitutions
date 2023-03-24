@@ -4,6 +4,7 @@ React front-end
 
 To-do
 [] Base route / suggestions
+[] "Show more" for long notes
 [] Pressing 'enter' when searching
 [] Add transition from empty state to substitute page loading
 [] Add blur event to close the results panel

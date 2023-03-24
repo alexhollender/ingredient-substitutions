@@ -26,9 +26,9 @@ function SubstituteItem({ substituteName, proportion, note, score, index }) {
   return (
     <li className="SubstituteItem" data-index={index}>
       {/* parse substituteName b/c sometimes it has <span> elements in it */}
-      <p className="substitute-name">{parse(formatName(substituteName))}</p>
-      {proportion ? <p className="substitute-proportion">{proportion}</p> : null}
-      {note ? <p className="substitute-note">{note}</p> : null}
+      <p className="name font-substitute">{parse(formatName(substituteName))}</p>
+      {proportion ? <p className="proportion font-note">{proportion}</p> : null}
+      {note ? <p className="note font-note">{note}</p> : null}
     </li>
   )
 }
