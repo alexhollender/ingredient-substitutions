@@ -1,9 +1,18 @@
 header {
-  align-items: center;
-  border-bottom: 1px solid #fff;
-  display: flex;
-  justify-content: space-between;
-  margin: 30px 60px 0;
+  border-bottom: 1px solid #eee;
+  padding: 12px 60px;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 #home { text-decoration: none; }
+
+@media (max-width: 800px) {
+  header { padding: 12px 20px; }
+  header h1 { width: 120px; }
+  header h2 { width: 90px; text-align: right; }
+}

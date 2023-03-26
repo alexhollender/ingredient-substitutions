@@ -7,7 +7,13 @@
 // to fix the page jump between no scrollbar & scrollbar
 html { overflow-y: scroll; }
 html, body { margin: 0; -webkit-font-smoothing: antialiased; }
-main { max-width: 600px; margin: 0 auto; margin-top: 150px; margin-bottom: 75px; }
+main { 
+  max-width: 600px; 
+  margin: 0 auto; 
+  margin-top: 100px; 
+  margin-bottom: 75px;
+  padding: 0 20px; 
+}
 h1, h2, h3 { 
   margin: 0; 
   font-weight: normal; 
@@ -45,4 +51,12 @@ a { text-decoration: none; }
   border-radius: 10px;
 
   h2 { margin-bottom: 20px; }
+}
+
+@media (max-width: 800px) {
+  main { margin-top: 20px; }
+  h1 { font-size: 22px; }
+  h2 { font-size: 14px; }
+  .font-ingredient { font-size: 22px; }
+  .panel { padding: 30px; }
 }
