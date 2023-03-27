@@ -1,4 +1,7 @@
 .aa-SearchResultItem {
   padding: 10px 46px;
   &[aria-selected='true'] { background-color: #ededed; }
+  @media (max-width: 550px) {
+    padding: 10px 36px;
+  }
 }

@@ -13,8 +13,10 @@ function AutoComplete({ currentItem }) {
   const [autocompleteState, setAutocompleteState] = useState({})
   // sets the input for autocomplete
   const inputRef = useRef(null)
-  // get URL path
+  // for deciding to autofocus the input or not
   const { path } = useParams()
+  const media = window.matchMedia("(max-width: 600px)")
+  const isMobile = media.matches
 
   useEffect(() => {
     // check if there is an item loaded into <Root>'s state
@@ -36,7 +38,7 @@ function AutoComplete({ currentItem }) {
       },
       id: 'autocomplete',
       placeholder: 'Search for an ingredient',
-      autoFocus: !path,
+      autoFocus: !path && !isMobile,
       getSources() {
         return [
           {
