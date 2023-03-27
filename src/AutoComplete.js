@@ -35,6 +35,10 @@ function AutoComplete({ currentItem }) {
       onStateChange({ state }) {
         // Synchronize the Autocomplete state with the React state
         setAutocompleteState(state);
+        const input = document.getElementById('autocomplete-input')
+        if (document.activeElement === input) {
+          window.scrollTo({ top: 50, left: 0, behavior: "smooth", });
+        }
       },
       id: 'autocomplete',
       placeholder: 'Search for an ingredient',
@@ -80,7 +84,7 @@ function AutoComplete({ currentItem }) {
       >
         <div id="input-container">
           <img src={searchIcon} />
-          <input id="ingredient-input" className="font-ingredient" ref={inputRef} {...autocomplete.getInputProps({})} />
+          <input className="font-ingredient" ref={inputRef} {...autocomplete.getInputProps({})} />
         </div>
       </form>
       <div className="aa-Panel" {...autocomplete.getPanelProps({})}>

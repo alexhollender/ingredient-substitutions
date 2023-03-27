@@ -36,7 +36,7 @@ function Root() {
   return (
     <div className="App">
       <Header />
-      <main>
+      <main id="main">
         <AutoComplete currentItem={currentItem} />
         { !path ? <Suggestions /> : null }
         <Outlet context={substitutesByCategory} />

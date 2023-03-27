@@ -3,8 +3,8 @@ Data stored in Algolia
 React front-end
 
 To-do
+[] Customize meta tags per path/page
 [] Mobile
-    [] Fix 'X' in input
     [] Scroll page when input is focused
 [] Make category tags/tabs
 [] Pressing 'enter' when searching
@@ -12,6 +12,7 @@ To-do
 [] Up/down voting
 [] Hide algolia API key
 [] Randomize the suggestions on the homescreen
+[] Dark mode
 
 
 Mamie springtime saffron pasta

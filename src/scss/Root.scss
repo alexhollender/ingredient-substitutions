@@ -10,9 +10,7 @@ html, body { margin: 0; -webkit-font-smoothing: antialiased; }
 main { 
   max-width: 600px; 
   margin: 0 auto; 
-  margin-top: 100px; 
-  margin-bottom: 75px;
-  padding: 0 20px; 
+  padding: 100px 20px 75px; 
 }
 h1, h2, h3 { 
   margin: 0; 
@@ -54,7 +52,7 @@ a { text-decoration: none; }
 }
 
 @media (max-width: 800px) {
-  main { margin-top: 16px; }
+  main { padding: 16px 20px 75px;  }
   h1 { font-size: 20px; }
   h2 { font-size: 16px; }
   .font-ingredient { font-size: 18px; font-family: sans-serif; }
