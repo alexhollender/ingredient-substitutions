@@ -20,6 +20,7 @@
       height: 14px;
       width: 14px;
       margin: 0 14px;
+      align-self: center;
       background-image: url("../assets/close-icon.svg");
       cursor: pointer;
     }
@@ -44,4 +45,15 @@
     background-color: #fff;
     box-shadow: 0 2px 2px rgb(0 0 0 / 10%);
   }
+}
+
+@media (max-width: 550px) {
+  .aa-Form img { 
+    width: 16px; 
+    height: 16px;
+    top: calc(50% - 8px); 
+    margin-left: 12px; 
+  }
+  .aa-Form input { padding-left: 38px; }
+  .aa-Form input::-webkit-search-cancel-button { margin: 0 12px 0 2px; }
 }

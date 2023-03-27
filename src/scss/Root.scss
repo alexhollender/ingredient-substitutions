@@ -54,9 +54,10 @@ a { text-decoration: none; }
 }
 
 @media (max-width: 800px) {
-  main { margin-top: 20px; }
-  h1 { font-size: 22px; }
-  h2 { font-size: 14px; }
-  .font-ingredient { font-size: 22px; }
-  .panel { padding: 30px; }
+  main { margin-top: 16px; }
+  h1 { font-size: 20px; }
+  h2 { font-size: 12px; }
+  .font-ingredient { font-size: 18px; font-family: sans-serif; }
+  .panel { margin-top: 16px; padding: 20px 30px; }
+  .panel h2 { margin-bottom: 16px; }
 }
